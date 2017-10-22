@@ -213,11 +213,11 @@ const Swipeout = createReactClass({
     var btnsRightWidth = this.state.btnsRightWidth;
 
     //  minimum threshold to open swipeout
-    var openX = contentWidth*0.33;
+    var openX = contentWidth*0.1;
 
     //  should open swipeout
-    var openLeft = posX > openX || posX > btnsLeftWidth/2;
-    var openRight = posX < -openX || posX < -btnsRightWidth/2;
+    var openLeft = posX > openX || posX > 50;
+    var openRight = posX < -openX || posX < -50;
 
     //  account for open swipeouts
     if (this.state.openedRight) var openRight = posX-openX < -openX;
@@ -309,11 +309,11 @@ const Swipeout = createReactClass({
       }, () => {
         this._tweenContent('contentPos', -this.state.btnsRightWidth);
         this._callOnOpen();
-        this.setState({ 
-          contentPos: -this.state.btnsRightWidth, 
-          openedLeft: false, 
-          openedRight: true, 
-          swiping: false 
+        this.setState({
+          contentPos: -this.state.btnsRightWidth,
+          openedLeft: false,
+          openedRight: true,
+          swiping: false
         });
       });
     });
@@ -327,11 +327,11 @@ const Swipeout = createReactClass({
       }, () => {
         this._tweenContent('contentPos', this.state.btnsLeftWidth);
         this._callOnOpen();
-        this.setState({ 
-          contentPos: this.state.btnsLeftWidth, 
-          openedLeft: true, 
-          openedRight: false, 
-          swiping: false 
+        this.setState({
+          contentPos: this.state.btnsLeftWidth,
+          openedLeft: true,
+          openedRight: false,
+          swiping: false
         });
       });
     });
